@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Assistant:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:#e9e6df;}
+  ::selection{background:#181818; color:#e9e6df;}
+  .gal{scrollbar-width:none;} .gal::-webkit-scrollbar{display:none;}
+  /* hero intro (auto-plays on load, survives re-render) */
+  @keyframes lvtRise{from{opacity:0; transform:translateY(40px);}to{opacity:1; transform:translateY(0);}}
+  @keyframes lvtFade{from{opacity:0;}to{opacity:1;}}
+  @keyframes lvtTick{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+  .h-rise{animation:lvtRise 1.2s cubic-bezier(.16,.84,.3,1) both;}
+  .h-fade{animation:lvtFade 1.5s ease both;}
+  .h-tick{transform-origin:right center; animation:lvtTick 1s cubic-bezier(.16,.84,.3,1) both;}
+  .h-d1{animation-delay:.08s;} .h-d2{animation-delay:.24s;} .h-d3{animation-delay:.44s;} .h-d4{animation-delay:.6s;}
+  /* scroll reveals — default fully visible (fallback); animate where scroll-timeline is supported */
+  @keyframes revealUp{from{opacity:0; transform:translateY(32px);}to{opacity:1; transform:translateY(0);}}
+  @keyframes imgSettle{from{opacity:0; transform:scale(1.07);}to{opacity:1; transform:scale(1);}}
+  .reveal{opacity:1;}
+  .img-rise{opacity:1;}
+  @supports (animation-timeline: view()){
+    .reveal{animation:revealUp linear both; animation-timeline:view(); animation-range:entry 4% entry 44%;}
+    .img-rise{animation:imgSettle linear both; animation-timeline:view(); animation-range:entry 0% cover 26%;}
+  }
+  @media (prefers-reduced-motion:reduce){ *{animation:none !important;} .reveal,.img-rise,.h-rise,.h-fade,.h-tick{opacity:1 !important; transform:none !important;} }
+</style>
+<meta name="ext-resource-dependency" content="assets/img/pkg-clay-1.jpg">
+<meta name="ext-resource-dependency" content="assets/img/pkg-cobalt-1.jpg">
+<meta name="ext-resource-dependency" content="assets/img/pkg-cobalt-2.jpg">
+<meta name="ext-resource-dependency" content="assets/img/pkg-green-1.jpg">
+<meta name="ext-resource-dependency" content="assets/img/apt-living.jpg">
+<meta name="ext-resource-dependency" content="assets/img/apt-bedroom.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-01.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-02.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-03.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-04.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-05.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-06.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-07.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-08.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-09.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-10.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-11.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-12.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-13.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-14.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-15.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-16.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-17.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-18.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-19.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-20.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-21.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-22.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-23.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-24.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-25.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-26.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-27.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-28.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-29.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-30.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-31.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-32.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-33.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-34.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-35.jpg">
+<meta name="ext-resource-dependency" content="assets/plans/plan-36.jpg">
+</helmet>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#181818"/><rect x="120" y="120" width="160" height="160" fill="none" stroke="#e9e6df" stroke-width="3"/><line x1="200" y1="120" x2="200" y2="280" stroke="#e9e6df" stroke-width="3"/><line x1="120" y1="173" x2="280" y2="173" stroke="#e9e6df" stroke-width="3"/><line x1="120" y1="227" x2="280" y2="227" stroke="#e9e6df" stroke-width="3"/><text x="200" y="330" fill="#e9e6df" font-family="Helvetica,Arial,sans-serif" font-size="34" font-weight="700" letter-spacing="2" text-anchor="middle">L'VNT</text></svg></template>
+<div id="atrium-root" dir="rtl" style="background:#e9e6df; color:#181818; font-family:'Assistant',sans-serif; overflow-x:hidden; font-feature-settings:'kern';">
+
+  <!-- ===== NAV ===== -->
+  <div id="atrium-nav" data-screen-label="Header" style="position:fixed; top:0; left:0; right:0; z-index:60; transition:background .5s, box-shadow .5s; background:transparent;">
+    <div id="nav-scrim" style="position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(15,15,15,.45),transparent);"></div>
+    <div style="position:relative; max-width:1280px; margin:0 auto; padding:24px 44px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:baseline; gap:12px;">
+        <div id="nav-logo" style="font:800 23px/1 'Hanken Grotesk',sans-serif; letter-spacing:.02em; color:#f2efe8; transition:color .5s;">L'VNT</div>
+        <div id="nav-sub" style="font:600 8.5px/1 'Hanken Grotesk',sans-serif; letter-spacing:.24em; color:rgba(242,239,232,.65); transition:color .5s;">BY GABSO GROUP</div>
+      </div>
+      <div id="nav-links" style="display:flex; gap:34px; font:500 15px/1 'Assistant',sans-serif; color:#eceae3; transition:color .5s;">
+        <a href="#concept" style="color:inherit; text-decoration:none;" style-hover="opacity:.55;">הפרויקט</a>
+        <a href="#atrium" style="color:inherit; text-decoration:none;" style-hover="opacity:.55;">האטריום</a>
+        <a href="#apartments" style="color:inherit; text-decoration:none;" style-hover="opacity:.55;">הדירות</a>
+        <a href="#area" style="color:inherit; text-decoration:none;" style-hover="opacity:.55;">השכונה</a>
+        <a href="#team" style="color:inherit; text-decoration:none;" style-hover="opacity:.55;">הצוות</a>
+      </div>
+      <a href="#contact" id="nav-cta" style="text-decoration:none; color:#f2efe8; padding:6px 0; font:500 15px/1 'Assistant',sans-serif; border-bottom:1px solid currentColor; transition:color .5s;" style-hover="opacity:.7;">תיאום סיור</a>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section data-screen-label="Hero" style="position:relative; height:100vh; min-height:660px; display:flex; align-items:flex-end; overflow:hidden;">
+    <img id="hero-img" src="assets/img/hero-facade.jpg" alt="THE ATRIUM" style="position:absolute; inset:0; width:100%; height:118%; top:-9%; object-fit:cover; object-position:center 38%; will-change:transform;">
+    <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,14,12,.78) 0%, rgba(15,14,12,.02) 46%, rgba(15,14,12,.3) 100%);"></div>
+    <div id="hero-copy" style="position:relative; max-width:1280px; margin:0 auto; padding:0 44px 9vh; width:100%;">
+      <div style="display:flex; align-items:center; gap:13px; margin-bottom:30px;">
+        <span class="h-tick" style="width:26px; height:1px; background:#b9b1a0;"></span>
+        <span class="h-fade h-d1" style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.28em; color:#e9e6df; text-transform:uppercase;">A New Urban Luxury Standard</span>
+      </div>
+      <h1 class="h-rise h-d2" style="margin:0; font:700 clamp(60px,11vw,164px)/0.85 'Hanken Grotesk',sans-serif; letter-spacing:-.035em; color:#f4f1ea;">THE ATRIUM</h1>
+      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:32px; margin-top:34px;">
+        <p class="h-rise h-d3" style="max-width:480px; margin:0; font:300 22px/1.55 'Assistant',sans-serif; color:#e4e0d6;">בניין מגורים סביב פטיו אנכי פתוח לשמים, בלב שדרות ירושלים המתחדשת ביפו.</p>
+        <a href="#contact" class="h-rise h-d4" style="text-decoration:none; color:#f4f1ea; font:500 16px/1 'Assistant',sans-serif; display:inline-flex; align-items:center; gap:10px; padding-bottom:7px; border-bottom:1px solid rgba(244,241,234,.5); transition:gap .25s, border-color .25s;" style-hover="gap:18px; border-color:#f4f1ea;">לתיאום סיור <span style="font-family:'Hanken Grotesk';">←</span></a>
+      </div>
+    </div>
+    <div id="hero-cue" class="h-fade h-d4" style="position:absolute; bottom:26px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px;">
+      <span style="font:600 9px/1 'Hanken Grotesk',sans-serif; letter-spacing:.24em; color:rgba(244,241,234,.7); text-transform:uppercase;">Scroll</span>
+      <span style="width:1px; height:34px; background:linear-gradient(180deg,rgba(244,241,234,.7),transparent);"></span>
+    </div>
+  </section>
+
+  <!-- ===== STAT STRIP ===== -->
+  <section id="stat-strip" style="background:#e9e6df; border-bottom:1px solid rgba(24,24,24,.13);">
+    <div style="max-width:1280px; margin:0 auto; padding:0 44px; display:grid; grid-template-columns:repeat(6,1fr);">
+      <div style="padding:46px 6px; border-left:1px solid rgba(24,24,24,.1);"><div class="stat-num" data-to="45" style="font:300 46px/1 'Assistant',sans-serif;">45</div><div style="margin-top:10px; font:600 10.5px/1.3 'Hanken Grotesk',sans-serif; letter-spacing:.16em; color:#7a766d; text-transform:uppercase;">דירות</div></div>
+      <div style="padding:46px 6px; border-left:1px solid rgba(24,24,24,.1);"><div class="stat-num" data-to="7" style="font:300 46px/1 'Assistant',sans-serif;">7</div><div style="margin-top:10px; font:600 10.5px/1.3 'Hanken Grotesk',sans-serif; letter-spacing:.16em; color:#7a766d; text-transform:uppercase;">קומות</div></div>
+      <div style="padding:46px 6px; border-left:1px solid rgba(24,24,24,.1);"><div class="stat-num" data-to="2" style="font:300 46px/1 'Assistant',sans-serif;">2</div><div style="margin-top:10px; font:600 10.5px/1.3 'Hanken Grotesk',sans-serif; letter-spacing:.16em; color:#7a766d; text-transform:uppercase;">אגפים</div></div>
+      <div style="padding:46px 6px; border-left:1px solid rgba(24,24,24,.1);"><div class="stat-num" data-to="1" style="font:300 46px/1 'Assistant',sans-serif;">1</div><div style="margin-top:10px; font:600 10.5px/1.3 'Hanken Grotesk',sans-serif; letter-spacing:.16em; color:#7a766d; text-transform:uppercase;">אטריום פתוח</div></div>
+      <div style="padding:46px 6px; border-left:1px solid rgba(24,24,24,.1);"><div class="stat-num" data-to="1" style="font:300 46px/1 'Assistant',sans-serif;">1</div><div style="margin-top:10px; font:600 10.5px/1.3 'Hanken Grotesk',sans-serif; letter-spacing:.16em; color:#7a766d; text-transform:uppercase;">חדר כושר</div></div>
+      <div style="padding:46px 6px;"><div style="font:300 46px/1 'Assistant',sans-serif;">'28</div><div style="margin-top:10px; font:600 10.5px/1.3 'Hanken Grotesk',sans-serif; letter-spacing:.16em; color:#7a766d; text-transform:uppercase;">אכלוס</div></div>
+    </div>
+  </section>
+
+  <!-- ===== CONCEPT ===== -->
+  <section id="concept" data-screen-label="Concept" style="background:#e9e6df; padding:clamp(96px,13vw,180px) 0;">
+    <div data-reveal class="reveal" style="max-width:1040px; margin:0 auto; padding:0 44px;">
+      <div style="display:flex; align-items:center; gap:13px; margin-bottom:46px;">
+        <span style="width:26px; height:1px; background:#181818;"></span>
+        <span style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.28em; color:#181818; text-transform:uppercase;">The Project — We Build In Bold</span>
+      </div>
+      <h2 style="margin:0; font:200 clamp(30px,4.1vw,54px)/1.4 'Assistant',sans-serif; color:#181818; letter-spacing:-.005em;">בלב יפו המתחדשת נולד בניין שמתרגם את הדופק העירוני לאדריכלות חיה — חזית אייקונית, חומריות עשירה, ופטיו אנכי פתוח לשמים שמכניס אור, אוויר ותנועה אל תוך הבית.</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-top:60px;">
+        <p style="margin:0; font:400 18px/1.85 'Assistant',sans-serif; color:#54514a;">שדרות ירושלים הן השדרה הראשונה שנבנתה בתל אביב — ציר ירוק עם שורת דקלים, רכבת קלה ומדרחוב פעיל, בעיצומה של התחדשות. כאן L'VNT מביאה קו חדש: שילוב בין יפו האותנטית לסטנדרט אורבני יוקרתי ובלתי מתפשר.</p>
+        <p style="margin:0; font:400 18px/1.85 'Assistant',sans-serif; color:#54514a;">תכנון אדריכלי בידי Stability Studio ו־Mendjul Architecture, מתוך גישה שמעמידה את האדריכלות כפעולה תרבותית — רגישה להקשר, לקצב ולמקום, ומתרגמת אותם לשפה עכשווית וברורה.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BUILDING ===== -->
+  <section data-screen-label="Building" style="background:#e1ddd3; padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal class="reveal" style="max-width:1280px; margin:0 auto; padding:0 44px; display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;">
+      <div style="position:relative; height:580px;">
+        <img class="img-rise" src="assets/img/facade-texture.jpg" alt="חזית הבניין" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div>
+        <div style="display:flex; align-items:center; gap:13px; margin-bottom:28px;">
+          <span style="width:26px; height:1px; background:#181818;"></span>
+          <span style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.28em; color:#181818; text-transform:uppercase;">The Building</span>
+        </div>
+        <h2 style="margin:0 0 26px; font:200 clamp(32px,3.8vw,52px)/1.1 'Assistant',sans-serif;">בונים באומץ</h2>
+        <p style="margin:0 0 40px; font:400 18px/1.85 'Assistant',sans-serif; color:#54514a; max-width:460px;">חזית שנבנתה כשכבה אדריכלית עמוקה: דפוסים ורטיקליים, תבניות בטון גליות, מסגרות פלדה ומרפסות מעוגלות בחיפוי מתכת — נוכחות אלגנטית וחדה, שמכבדת את המרקם של השדרה.</p>
+        <div style="display:flex; flex-direction:column;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:18px 0; border-top:1px solid rgba(24,24,24,.13);"><span style="font:400 17px 'Assistant',sans-serif;">בניין</span><span style="font:500 13px/1 'Hanken Grotesk',sans-serif; letter-spacing:.04em; color:#6b6760;">7 FLOORS · 2 WINGS</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:18px 0; border-top:1px solid rgba(24,24,24,.13);"><span style="font:400 17px 'Assistant',sans-serif;">דירות</span><span style="font:500 13px/1 'Hanken Grotesk',sans-serif; letter-spacing:.04em; color:#6b6760;">45 · 37–175 מ״ר</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:18px 0; border-top:1px solid rgba(24,24,24,.13);"><span style="font:400 17px 'Assistant',sans-serif;">קומת קרקע</span><span style="font:500 13px/1 'Hanken Grotesk',sans-serif; letter-spacing:.04em; color:#6b6760;">מסחר · לובי כפול-גובה</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:18px 0; border-top:1px solid rgba(24,24,24,.13); border-bottom:1px solid rgba(24,24,24,.13);"><span style="font:400 17px 'Assistant',sans-serif;">מתקנים</span><span style="font:500 13px/1 'Hanken Grotesk',sans-serif; letter-spacing:.04em; color:#6b6760;">חדר כושר · חניון תת-קרקעי</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ATRIUM (dark) ===== -->
+  <section id="atrium" data-screen-label="Atrium" style="background:#181818; color:#e9e6df; padding:clamp(96px,13vw,180px) 0;">
+    <div data-reveal class="reveal" style="max-width:1280px; margin:0 auto; padding:0 44px;">
+      <div style="display:flex; align-items:center; gap:13px; margin-bottom:40px;">
+        <span style="width:26px; height:1px; background:#b9b1a0;"></span>
+        <span style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.28em; color:#e9e6df; text-transform:uppercase;">The Public Spaces — Lobby · Atrium · Gym</span>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1.1fr; gap:56px; align-items:stretch;">
+        <div style="position:relative; min-height:660px; overflow:hidden;">
+          <img class="img-rise" src="assets/img/atrium-main.jpg" alt="האטריום הפנימי" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div style="display:flex; flex-direction:column; justify-content:center;">
+          <h2 style="margin:0 0 26px; font:200 clamp(32px,4vw,56px)/1.08 'Assistant',sans-serif; color:#f4f1ea;">פטיו אנכי,<br>פתוח לשמים</h2>
+          <p style="margin:0 0 22px; font:300 19px/1.8 'Assistant',sans-serif; color:#b6b1a6;">בלב הבניין נפתח אטריום אנכי המלווה את המבנה מהקרקע ועד הגג — מכניס אור, אוויר ותנועה, ויוצר מערכת של גשרים, מעברים ומבטים פנימיים שמעניקים לחיי המגורים עומק, רוגע ואינטימיות בתוך העיר.</p>
+          <p style="margin:0 0 40px; font:300 16px/1.75 'Assistant',sans-serif; color:#8a857a;">קונספט ועיצוב פנים בהובלת אמילי גולדשטיין — מאחורי מלונות W Barcelona ו־W Amsterdam.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 40px;">
+            <div style="display:flex; gap:14px; align-items:baseline; padding:14px 0; border-top:1px solid rgba(233,230,223,.14);"><span style="font:500 12px 'Hanken Grotesk',sans-serif; color:#b9b1a0;">01</span><span style="font:400 16px 'Assistant',sans-serif; color:#d8d3c8;">גשרים פתוחים בכל קומה</span></div>
+            <div style="display:flex; gap:14px; align-items:baseline; padding:14px 0; border-top:1px solid rgba(233,230,223,.14);"><span style="font:500 12px 'Hanken Grotesk',sans-serif; color:#b9b1a0;">02</span><span style="font:400 16px 'Assistant',sans-serif; color:#d8d3c8;">גינת קקטוסים פנימית</span></div>
+            <div style="display:flex; gap:14px; align-items:baseline; padding:14px 0; border-top:1px solid rgba(233,230,223,.14);"><span style="font:500 12px 'Hanken Grotesk',sans-serif; color:#b9b1a0;">03</span><span style="font:400 16px 'Assistant',sans-serif; color:#d8d3c8;">אור ואוורור טבעי</span></div>
+            <div style="display:flex; gap:14px; align-items:baseline; padding:14px 0; border-top:1px solid rgba(233,230,223,.14);"><span style="font:500 12px 'Hanken Grotesk',sans-serif; color:#b9b1a0;">04</span><span style="font:400 16px 'Assistant',sans-serif; color:#d8d3c8;">צמחייה נשפכת מהקומות</span></div>
+            <div style="display:flex; gap:14px; align-items:baseline; padding:14px 0; border-top:1px solid rgba(233,230,223,.14); border-bottom:1px solid rgba(233,230,223,.14);"><span style="font:500 12px 'Hanken Grotesk',sans-serif; color:#b9b1a0;">05</span><span style="font:400 16px 'Assistant',sans-serif; color:#d8d3c8;">אלומיניום מוברש</span></div>
+            <div style="display:flex; gap:14px; align-items:baseline; padding:14px 0; border-top:1px solid rgba(233,230,223,.14); border-bottom:1px solid rgba(233,230,223,.14);"><span style="font:500 12px 'Hanken Grotesk',sans-serif; color:#b9b1a0;">06</span><span style="font:400 16px 'Assistant',sans-serif; color:#d8d3c8;">חדר כושר לדיירים</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- public spaces gallery -->
+      <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:16px; margin-top:64px;">
+        <div style="position:relative; height:clamp(340px,42vw,560px); overflow:hidden;">
+          <img class="img-rise" src="assets/img/public-floor-lobby.jpg" alt="לובי קומתי" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+          <div style="position:absolute; bottom:0; right:0; background:rgba(24,24,24,.78); color:#f3efe7; padding:11px 18px; font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.14em;">לובי קומתי · FLOOR LOBBY</div>
+        </div>
+        <div style="display:grid; grid-template-rows:1fr 1fr; gap:16px;">
+          <div style="position:relative; overflow:hidden; min-height:160px;">
+            <img class="img-rise" src="assets/img/public-gym.jpg" alt="חדר כושר" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+            <div style="position:absolute; bottom:0; right:0; background:rgba(24,24,24,.78); color:#f3efe7; padding:10px 16px; font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.14em;">חדר כושר · GYM</div>
+          </div>
+          <div style="position:relative; overflow:hidden; min-height:160px;">
+            <img class="img-rise" src="assets/img/atrium-vertical.jpg" alt="האטריום מבט מלמטה" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+            <div style="position:absolute; bottom:0; right:0; background:rgba(24,24,24,.78); color:#f3efe7; padding:10px 16px; font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.14em;">אטריום · ATRIUM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== APARTMENTS ===== -->
+  <section id="apartments" data-screen-label="Apartments" style="background:#e9e6df; padding:clamp(96px,13vw,180px) 0;">
+    <div data-reveal class="reveal" style="max-width:1280px; margin:0 auto; padding:0 44px;">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:24px; margin-bottom:8px;">
+        <div>
+          <div style="display:flex; align-items:center; gap:13px; margin-bottom:26px;">
+            <span style="width:26px; height:1px; background:#181818;"></span>
+            <span style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.28em; color:#181818; text-transform:uppercase;">The Apartments — Design As A Way Of Living</span>
+          </div>
+          <h2 style="margin:0; font:200 clamp(32px,4.2vw,56px)/1.04 'Assistant',sans-serif;">עיצוב כדרך חיים</h2>
+        </div>
+        <p style="margin:0 0 6px; max-width:360px; font:400 17px/1.7 'Assistant',sans-serif; color:#54514a;">הדירות מגיעות מעוצבות עד הפרט האחרון — חלל שלם ומוגמר, לא הכנה לעיצוב עתידי.</p>
+      </div>
+
+      <div style="margin-top:54px;">
+        <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-bottom:14px;">
+          <span style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.16em; color:#8a857a; text-transform:uppercase; white-space:nowrap;">סינון לפי חדרים</span>
+          <div style="display:flex; gap:7px; flex-wrap:wrap;">
+            <sc-for list="{{ roomFilters }}" as="rf" hint-placeholder-count="6">
+              <div onClick="{{ rf.select }}" style="cursor:pointer; display:flex; align-items:center; gap:7px; padding:9px 16px; border:1px solid {{ rf.border }}; background:{{ rf.bg }}; color:{{ rf.fg }}; font:500 14px/1 'Assistant',sans-serif; transition:all .25s;">{{ rf.label }}<span style="font:600 10px/1 'Hanken Grotesk',sans-serif; opacity:.55;">{{ rf.count }}</span></div>
+            </sc-for>
+          </div>
+          <span style="flex:1; min-width:10px;"></span>
+          <span style="font:400 13px/1 'Assistant',sans-serif; color:#9a958c; white-space:nowrap;">לחצו על דירה לצפייה בתוכנית</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:54px 1fr 104px 1fr; gap:10px; margin:26px 0 12px;">
+          <div></div>
+          <div style="text-align:center; font:600 10.5px/1 'Hanken Grotesk',sans-serif; letter-spacing:.16em; color:#8a857a; text-transform:uppercase;">אגף חזית · שדרות ירושלים</div>
+          <div></div>
+          <div style="text-align:center; font:600 10.5px/1 'Hanken Grotesk',sans-serif; letter-spacing:.16em; color:#8a857a; text-transform:uppercase;">אגף עורף · גן פנימי</div>
+        </div>
+
+        <sc-for list="{{ floors }}" as="fl" hint-placeholder-count="8">
+          <div style="display:grid; grid-template-columns:54px 1fr 104px 1fr; gap:10px; align-items:stretch; margin-bottom:10px;">
+            <div style="display:flex; align-items:center; justify-content:center; text-align:center;">
+              <sc-if value="{{ fl.isPent }}" hint-placeholder-val="{{ false }}"><span style="font:600 9px/1.3 'Hanken Grotesk',sans-serif; letter-spacing:.1em; color:#8a857a; text-transform:uppercase;">קומת<br>פנטהאוז</span></sc-if>
+              <sc-if value="{{ fl.notPent }}" hint-placeholder-val="{{ true }}"><span style="font:300 20px/1 'Assistant',sans-serif; color:#9a958c;">{{ fl.label }}</span></sc-if>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <sc-if value="{{ fl.isGround }}" hint-placeholder-val="{{ false }}">
+                <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:60px; border:1px dashed rgba(24,24,24,.22); font:400 13px 'Assistant',sans-serif; color:#9a958c;">לובי · מסחר · כניסה</div>
+              </sc-if>
+              <sc-for list="{{ fl.front }}" as="u" hint-placeholder-count="3">
+                <div onClick="{{ u.open }}" style="flex:1; min-width:52px; min-height:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; cursor:pointer; background:#e3dfd4; color:#181818; border:1px solid rgba(24,24,24,.14); opacity:{{ u.opacity }}; transition:transform .2s, box-shadow .2s, border-color .2s, opacity .35s; will-change:opacity;" style-hover="border-color:#181818; box-shadow:0 5px 16px rgba(24,24,24,.13); transform:translateY(-2px);">
+                  <div style="font:300 22px/1 'Assistant',sans-serif;">{{ u.n }}</div>
+                  <div style="font:600 9px/1 'Hanken Grotesk',sans-serif; letter-spacing:.03em; opacity:.62;">{{ u.area }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex; align-items:center; justify-content:center; font:600 8.5px/1.3 'Hanken Grotesk',sans-serif; letter-spacing:.1em; color:#b8b2a6; text-transform:uppercase; text-align:center;">{{ fl.core }}</div>
+            <div style="display:flex; gap:8px;">
+              <sc-for list="{{ fl.back }}" as="u" hint-placeholder-count="3">
+                <div onClick="{{ u.open }}" style="flex:1; min-width:52px; min-height:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; cursor:pointer; background:#e3dfd4; color:#181818; border:1px solid rgba(24,24,24,.14); opacity:{{ u.opacity }}; transition:transform .2s, box-shadow .2s, border-color .2s, opacity .35s; will-change:opacity;" style-hover="border-color:#181818; box-shadow:0 5px 16px rgba(24,24,24,.13); transform:translateY(-2px);">
+                  <div style="font:300 22px/1 'Assistant',sans-serif;">{{ u.n }}</div>
+                  <div style="font:600 9px/1 'Hanken Grotesk',sans-serif; letter-spacing:.03em; opacity:.62;">{{ u.area }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+
+        <div style="margin-top:24px; font:400 13px/1.6 'Assistant',sans-serif; color:#9a958c; max-width:760px;">* שטחים לפי התמהיל המעוצב. לחיצה על דירה פותחת את תוכנית הדירה; דירות מסומנות כ״תכנית דגם״ — התוכנית המדויקת תימסר בתיק המכר.</div>
+      </div>
+
+      <!-- DESIGN PACKAGES -->
+      <div style="margin-top:clamp(72px,9vw,120px);">
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; margin-bottom:8px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:13px; margin-bottom:22px;">
+              <span style="width:26px; height:1px; background:#181818;"></span>
+              <span style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.28em; color:#181818; text-transform:uppercase;">Interior Packages — חבילות עיצוב</span>
+            </div>
+            <h3 style="margin:0; font:200 clamp(28px,3.6vw,46px)/1.05 'Assistant',sans-serif;">שלוש שפות עיצוב</h3>
+          </div>
+          <p style="margin:0 0 6px; max-width:380px; font:400 16px/1.7 'Assistant',sans-serif; color:#54514a;">כל דירה נמסרת מעוצבת עד הפרט — בחרו את אחת משלוש חבילות העיצוב החתומות של אמילי גולדשטיין.</p>
+        </div>
+
+        <div style="display:flex; gap:0; flex-wrap:wrap; margin:36px 0 26px; border-bottom:1px solid rgba(24,24,24,.13);">
+          <sc-for list="{{ pkgs }}" as="pk" hint-placeholder-count="3">
+            <div onClick="{{ pk.select }}" style="cursor:pointer; padding:0 28px 16px; margin-bottom:-1px; display:flex; align-items:baseline; gap:9px; color:{{ pk.fg }}; border-bottom:2px solid {{ pk.under }}; transition:color .25s, border-color .25s;">
+              <span style="font:400 19px/1 'Assistant',sans-serif;">{{ pk.name }}</span>
+              <span style="font:600 10px/1 'Hanken Grotesk',sans-serif; letter-spacing:.14em; opacity:.6;">{{ pk.en }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1.55fr 1fr; gap:0; align-items:stretch;">
+          <div style="position:relative; min-height:540px; overflow:hidden; background:#dedacf;">
+            <sc-for list="{{ activePkgImgList }}" as="im" hint-placeholder-count="1"><img src="{{ im.img }}" alt="{{ im.alt }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></sc-for>
+            <div style="position:absolute; top:0; right:0; background:rgba(24,24,24,.82); color:#f3efe7; padding:11px 18px; font:600 12px/1 'Hanken Grotesk',sans-serif; letter-spacing:.14em;">{{ activePkgEn }}</div>
+          </div>
+          <div style="padding:clamp(28px,3vw,46px); display:flex; flex-direction:column; background:#e1ddd3;">
+            <h4 style="margin:0 0 6px; font:200 34px/1 'Assistant',sans-serif;">חבילת {{ activePkgName }}</h4>
+            <div style="display:flex; gap:0; margin:18px 0 26px;">
+              <sc-for list="{{ activePkgPalette }}" as="sw" hint-placeholder-count="4">
+                <span style="width:38px; height:38px; background:{{ sw.c }};"></span>
+              </sc-for>
+            </div>
+            <p style="margin:0 0 26px; font:400 16px/1.75 'Assistant',sans-serif; color:#54514a;">{{ activePkgDesc }}</p>
+            <div style="display:flex; flex-direction:column; margin-bottom:26px;">
+              <sc-for list="{{ activePkgMats }}" as="mt" hint-placeholder-count="4">
+                <div style="display:flex; align-items:baseline; gap:12px; padding:12px 0; border-top:1px solid rgba(24,24,24,.12);"><span style="width:5px; height:5px; border-radius:50%; background:#181818;"></span><span style="font:400 16px 'Assistant',sans-serif; color:#1c1a15;">{{ mt.m }}</span></div>
+              </sc-for>
+            </div>
+            <div style="margin-top:auto; position:relative; height:150px; overflow:hidden;">
+              <sc-for list="{{ activePkgThumbList }}" as="th" hint-placeholder-count="1"><img src="{{ th.img }}" alt="{{ th.alt }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section data-screen-label="Gallery" style="background:#181818;">
+    <div class="gal" style="display:flex; overflow-x:auto; scroll-snap-type:x mandatory;">
+      <div style="flex:0 0 44%; scroll-snap-align:start; height:64vh; min-height:440px;"><img src="assets/img/pkg-clay-1.jpg" alt="סלון — חבילת חמרה" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+      <div style="flex:0 0 44%; scroll-snap-align:start; height:64vh; min-height:440px;"><img src="assets/img/pkg-cobalt-1.jpg" alt="מטבח — חבילת קובלט" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+      <div style="flex:0 0 44%; scroll-snap-align:start; height:64vh; min-height:440px;"><img src="assets/img/pkg-green-1.jpg" alt="חדר רחצה — חבילת ירוק" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+      <div style="flex:0 0 44%; scroll-snap-align:start; height:64vh; min-height:440px;"><img src="assets/img/apt-bedroom.jpg" alt="חדר שינה" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+    </div>
+  </section>
+
+  <!-- ===== AREA ===== -->
+  <section id="area" data-screen-label="Area" style="background:#e9e6df; padding:clamp(96px,13vw,180px) 0;">
+    <div data-reveal class="reveal" style="max-width:1280px; margin:0 auto; padding:0 44px;">
+      <div style="display:flex; align-items:center; gap:13px; margin-bottom:30px;">
+        <span style="width:26px; height:1px; background:#181818;"></span>
+        <span style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.28em; color:#181818; text-transform:uppercase;">The Area — The Rhythm of Jerusalem Blvd</span>
+      </div>
+      <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:64px; align-items:end; margin-bottom:54px;">
+        <h2 style="margin:0; font:300 clamp(30px,3.8vw,52px)/1.06 'Assistant',sans-serif;">נקודת המפגש<br>של הכול</h2>
+        <p style="margin:0; font:400 18px/1.85 'Assistant',sans-serif; color:#54514a;">תחנה אחת מהים, שתיים מרוטשילד, ובמרחק הליכה מכל מה שטוב בעיר — קולינריה, תרבות ובילוי.</p>
+      </div>
+      <div style="position:relative; height:clamp(360px,46vw,560px); overflow:hidden; margin-bottom:40px;">
+        <img class="img-rise" src="assets/img/aerial-boulevard.jpg" alt="צילום אוויר — שדרות ירושלים" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+        <div style="position:absolute; bottom:18px; right:22px; font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.16em; color:rgba(244,241,234,.9); text-transform:uppercase;">Jerusalem Blvd · Jaffa</div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); column-gap:0; row-gap:0; border-top:1px solid rgba(24,24,24,.13);">
+        <sc-for list="{{ pois }}" as="p" hint-placeholder-count="8">
+          <div style="padding:24px 22px 24px 0; border-bottom:1px solid rgba(24,24,24,.1);">
+            <div style="font:300 26px/1 'Assistant',sans-serif; color:#181818;">{{ p.time }}</div>
+            <div style="margin-top:9px; font:400 16px/1.3 'Assistant',sans-serif; color:#54514a;">{{ p.name }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM ===== -->
+  <section id="team" data-screen-label="Team" style="background:#e1ddd3; padding:clamp(96px,13vw,180px) 0;">
+    <div data-reveal class="reveal" style="max-width:1280px; margin:0 auto; padding:0 44px;">
+      <div style="display:flex; align-items:center; gap:13px; margin-bottom:40px;">
+        <span style="width:26px; height:1px; background:#181818;"></span>
+        <span style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.28em; color:#181818; text-transform:uppercase;">The Team — Built by people who love the city</span>
+      </div>
+      <div style="position:relative; height:clamp(380px,44vw,540px); overflow:hidden; margin-bottom:56px;">
+        <img class="img-rise" src="assets/img/team.jpg" alt="צוות L'VNT" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 34%;">
+      </div>
+      <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:64px; align-items:start; margin-bottom:58px;">
+        <h2 style="margin:0; font:200 clamp(30px,3.8vw,50px)/1.14 'Assistant',sans-serif;">יזמים שחיים, נושמים ובונים את העיר מחדש</h2>
+        <div>
+          <p style="margin:0 0 18px; font:400 17px/1.85 'Assistant',sans-serif; color:#54514a;">L'VNT היא חברת בת של קבוצת גבסו — חברה יזמית וקבלנית שהוקמה לפני יותר מ־70 שנה, עם ניסיון בבניית אלפי יחידות דיור, חוסן פיננסי ואיכות ביצוע בלתי מתפשרת.</p>
+          <p style="margin:0; font:400 17px/1.85 'Assistant',sans-serif; color:#54514a;">אנחנו דור ההמשך: יסודות חזקים מצד אחד, ראש חדש וחשיבה קריאייטיבית מצד שני — שילוב שמגדיר סטנדרט חדש בעיר.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:44px;">
+        <div style="border-top:1px solid rgba(24,24,24,.2); padding-top:24px;">
+          <div style="font:600 13px/1 'Hanken Grotesk',sans-serif; letter-spacing:.06em; margin-bottom:12px;">STABILITY STUDIO</div>
+          <p style="margin:0; font:400 15px/1.7 'Assistant',sans-serif; color:#54514a;">אורי שלום, אדריכל ומייסד המשרד, חבר סגל בבצלאל וייצג את ישראל בביאנלה לאדריכלות בוונציה 2014. מתמחה במבני מגורים ותכנון עירוני.</p>
+        </div>
+        <div style="border-top:1px solid rgba(24,24,24,.2); padding-top:24px;">
+          <div style="font:600 13px/1 'Hanken Grotesk',sans-serif; letter-spacing:.06em; margin-bottom:12px;">MENDJUL ARCHITECTURE</div>
+          <p style="margin:0; font:400 15px/1.7 'Assistant',sans-serif; color:#54514a;">קריסטינה מנדז׳ול, אדריכלית ויזמית, משלבת יצירתיות, חשיבה אסטרטגית וכלי תכנון מתקדמים — אדריכלות שמספרת סיפור ומייצרת ערך.</p>
+        </div>
+        <div style="border-top:1px solid rgba(24,24,24,.2); padding-top:24px;">
+          <div style="font:600 13px/1 'Hanken Grotesk',sans-serif; letter-spacing:.06em; margin-bottom:12px;">EMILIE GOLDSTEIN</div>
+          <p style="margin:0; font:400 15px/1.7 'Assistant',sans-serif; color:#54514a;">אדריכלית ומעצבת פנים, Design Total Studio. מובילה פרויקטים במילאנו, ניו יורק וטורונטו, ומגיעה מעולם המלונאות הבינלאומית.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" data-screen-label="Contact" style="background:#181818; color:#e9e6df; padding:clamp(96px,13vw,180px) 0;">
+    <div data-reveal class="reveal" style="max-width:1280px; margin:0 auto; padding:0 44px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start;">
+        <div>
+          <div style="display:flex; align-items:center; gap:13px; margin-bottom:34px;">
+            <span style="width:26px; height:1px; background:#b9b1a0;"></span>
+            <span style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.28em; color:#e9e6df; text-transform:uppercase;">Private Viewing</span>
+          </div>
+          <h2 style="margin:0 0 24px; font:200 clamp(36px,5vw,66px)/1.04 'Assistant',sans-serif; color:#f4f1ea;">נשמח<br>להכיר אתכם</h2>
+          <p style="margin:0 0 44px; font:300 19px/1.6 'Assistant',sans-serif; color:#b6b1a6; max-width:400px;">השאירו פרטים ויועץ מכירות יחזור אליכם עם תיק מכר מלא ותיאום סיור במשרד המכירות.</p>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <a href="mailto:INFO@LEVANT-LIVING.CO.IL" style="text-decoration:none; font:500 20px 'Hanken Grotesk',sans-serif; letter-spacing:.01em; color:#f4f1ea;" style-hover="color:#ffffff;">INFO@LEVANT-LIVING.CO.IL</a>
+            <a href="tel:+97237207988" style="text-decoration:none; font:500 20px 'Hanken Grotesk',sans-serif; letter-spacing:.03em; color:#f4f1ea;" style-hover="color:#ffffff;">+972 3 720 7988</a>
+            <div style="font:400 17px 'Assistant',sans-serif; color:#8a857a;">רוטשילד 76, תל אביב</div>
+          </div>
+        </div>
+        <div>
+          <div style="font:600 10.5px/1 'Hanken Grotesk',sans-serif; letter-spacing:.18em; color:#8a857a; text-transform:uppercase; margin-bottom:16px;">דירה שמעניינת אתכם</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px;">
+            <div style="cursor:pointer; padding:9px 16px; border:1px solid rgba(233,230,223,.25); color:#b6b1a6; font:400 15px/1 'Assistant',sans-serif; transition:all .2s;" style-hover="border-color:#e9e6df; color:#f4f1ea;">2 חדרים</div>
+            <div style="cursor:pointer; padding:9px 16px; border:1px solid rgba(233,230,223,.25); color:#b6b1a6; font:400 15px/1 'Assistant',sans-serif; transition:all .2s;" style-hover="border-color:#e9e6df; color:#f4f1ea;">3 חדרים</div>
+            <div style="cursor:pointer; padding:9px 16px; border:1px solid rgba(233,230,223,.25); color:#b6b1a6; font:400 15px/1 'Assistant',sans-serif; transition:all .2s;" style-hover="border-color:#e9e6df; color:#f4f1ea;">4 חדרים</div>
+            <div style="cursor:pointer; padding:9px 16px; border:1px solid rgba(233,230,223,.25); color:#b6b1a6; font:400 15px/1 'Assistant',sans-serif; transition:all .2s;" style-hover="border-color:#e9e6df; color:#f4f1ea;">פנטהאוז</div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:0;">
+            <input placeholder="שם מלא" style="background:transparent; border:0; border-bottom:1px solid rgba(233,230,223,.22); color:#e9e6df; padding:18px 2px; font:400 16px 'Assistant',sans-serif; outline:none;">
+            <input placeholder="טלפון" style="background:transparent; border:0; border-bottom:1px solid rgba(233,230,223,.22); color:#e9e6df; padding:18px 2px; font:400 16px 'Assistant',sans-serif; outline:none;">
+            <input placeholder="דוא״ל" style="background:transparent; border:0; border-bottom:1px solid rgba(233,230,223,.22); color:#e9e6df; padding:18px 2px; font:400 16px 'Assistant',sans-serif; outline:none;">
+            <div style="margin-top:30px; background:#e9e6df; color:#181818; padding:17px; text-align:center; font:500 16px 'Assistant',sans-serif; cursor:pointer; transition:background .25s, color .25s;" style-hover="background:#181818; color:#181818;">שליחת פרטים</div>
+            <div style="margin-top:14px; font:400 12px/1.5 'Assistant',sans-serif; color:#6b6760;">בלחיצה על שליחה אני מאשר/ת קבלת מידע שיווקי מ־L'VNT.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background:#111110; padding:48px 0; border-top:1px solid rgba(233,230,223,.08);">
+    <div style="max-width:1280px; margin:0 auto; padding:0 44px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <div style="display:flex; align-items:baseline; gap:12px;">
+        <span style="font:800 21px/1 'Hanken Grotesk',sans-serif; letter-spacing:.02em; color:#e9e6df;">L'VNT</span>
+        <span style="font:600 8.5px/1 'Hanken Grotesk',sans-serif; letter-spacing:.24em; color:#7a766d;">BY GABSO GROUP</span>
+      </div>
+      <div style="font:400 13px 'Assistant',sans-serif; color:#6b6760;">© 2026 Levant Living · THE ATRIUM · שדרות ירושלים, יפו</div>
+      <div style="font:600 10.5px 'Hanken Grotesk',sans-serif; letter-spacing:.2em; color:#8a857a; text-transform:uppercase;">A New Urban Luxury Standard</div>
+    </div>
+  </footer>
+
+</div>
+
+  <!-- ===== APARTMENT DETAIL OVERLAY ===== -->
+  <sc-if value="{{ hasOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeApt }}" dir="rtl" style="position:fixed; inset:0; z-index:120; background:rgba(18,16,12,.62); backdrop-filter:blur(5px); display:flex; align-items:center; justify-content:center; padding:clamp(12px,3vw,40px); font-family:'Assistant',sans-serif;">
+      <div onClick="{{ stop }}" style="background:#f3efe7; width:100%; max-width:1060px; max-height:92vh; overflow:auto; position:relative; box-shadow:0 30px 80px rgba(0,0,0,.45);">
+        <div onClick="{{ closeApt }}" style="position:absolute; top:16px; left:16px; width:42px; height:42px; display:flex; align-items:center; justify-content:center; cursor:pointer; border:1px solid rgba(24,24,24,.2); font:300 24px/1 'Hanken Grotesk',sans-serif; color:#181818; background:#f3efe7; z-index:3; transition:background .2s,color .2s;" style-hover="background:#181818; color:#f3efe7;">×</div>
+        <div style="padding:clamp(26px,3.5vw,48px);">
+          <div style="display:flex; align-items:center; gap:13px; margin-bottom:16px;">
+            <span style="width:26px; height:1px; background:#181818;"></span>
+            <span style="font:600 11px/1 'Hanken Grotesk',sans-serif; letter-spacing:.22em; color:#181818; text-transform:uppercase;">{{ openFloor }}</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:16px; flex-wrap:wrap;">
+            <h3 style="margin:0; font:200 clamp(30px,4vw,46px)/1.02 'Assistant',sans-serif;">{{ openTitle }}</h3>
+            <span style="font:400 18px 'Assistant',sans-serif; color:#6b6760;">{{ openSub }}</span>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0 24px; margin:26px 0 28px; border-top:1px solid rgba(24,24,24,.16);">
+            <div style="padding:16px 0; border-bottom:1px solid rgba(24,24,24,.1);"><div style="font:300 25px/1 'Assistant',sans-serif;">{{ openBuilt }}</div><div style="margin-top:6px; font:600 9.5px/1 'Hanken Grotesk',sans-serif; letter-spacing:.12em; color:#8a857a; text-transform:uppercase;">בנוי</div></div>
+            <div style="padding:16px 0; border-bottom:1px solid rgba(24,24,24,.1);"><div style="font:300 25px/1 'Assistant',sans-serif;">{{ openBal }}</div><div style="margin-top:6px; font:600 9.5px/1 'Hanken Grotesk',sans-serif; letter-spacing:.12em; color:#8a857a; text-transform:uppercase;">מרפסת / חצר</div></div>
+            <div style="padding:16px 0; border-bottom:1px solid rgba(24,24,24,.1);"><div style="font:300 25px/1 'Assistant',sans-serif;">{{ openTotal }}</div><div style="margin-top:6px; font:600 9.5px/1 'Hanken Grotesk',sans-serif; letter-spacing:.12em; color:#8a857a; text-transform:uppercase;">סה״כ</div></div>
+            <div style="padding:16px 0; border-bottom:1px solid rgba(24,24,24,.1);"><div style="font:300 25px/1 'Assistant',sans-serif;">{{ openRooms }}</div><div style="margin-top:6px; font:600 9.5px/1 'Hanken Grotesk',sans-serif; letter-spacing:.12em; color:#8a857a; text-transform:uppercase;">חדרים</div></div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr; gap:18px;">
+            <sc-for list="{{ openPlans }}" as="p" hint-placeholder-count="1">
+              <div style="background:#ffffff; border:1px solid rgba(24,24,24,.12);">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; border-bottom:1px solid rgba(24,24,24,.1);">
+                  <span style="font:600 10.5px/1 'Hanken Grotesk',sans-serif; letter-spacing:.14em; color:#6b6760; text-transform:uppercase;">{{ p.label }}</span>
+                  <span style="font:700 10px/1 'Hanken Grotesk',sans-serif; letter-spacing:.18em; color:#181818;">L'VNT</span>
+                </div>
+                <img data-plan-src="{{ p.url }}" alt="{{ p.label }}" style="width:100%; display:block; background:#f3efe7; min-height:120px;">
+              </div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ openSample }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:16px; padding:13px 16px; background:#e4e0d6; font:400 13px/1.5 'Assistant',sans-serif; color:#6b6760;">תכנית דגם להמחשה — תכנית מדויקת לדירה זו תימסר בתיק המכר.</div>
+          </sc-if>
+          <div style="margin-top:26px; display:flex; gap:22px; align-items:center; flex-wrap:wrap;">
+            <a href="#contact" onClick="{{ closeApt }}" style="text-decoration:none; background:#181818; color:#f3efe7; padding:15px 30px; font:500 15px/1 'Assistant',sans-serif; transition:background .25s,color .25s;" style-hover="background:#181818; color:#181818;">לתיאום צפייה בדירה</a>
+            <span style="font:400 14px 'Assistant',sans-serif; color:#9a958c;">{{ openTitle }} · {{ openFloor }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:860}}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.state = { open: null, filter: null, pkg: 0 };
+    this.P = n => `assets/plans/plan-${String(n).padStart(2,'0')}.jpg`;
+    // n, fl=floor, w=front/back, b=built m², t=total m², r=rooms, bal, tn=type name, pl=plan pages, s=sample plan
+    this.APTS = [
+      {n:1, fl:0,w:'b',b:113.4,t:129.4,r:'3',bal:'חצר 16 מ״ר',tn:'דירת גן · דופלקס',pl:[1,2]},
+      {n:2, fl:0,w:'b',b:115.5,t:132.8,r:'3',bal:'חצר 17 מ״ר',tn:'דירת גן · דופלקס',pl:[3,4]},
+      {n:3, fl:0,w:'b',b:175.4,t:191.8,r:'4',bal:'חצר 16 מ״ר',tn:'דירת גן · דופלקס',pl:[5,6]},
+      {n:4, fl:1,w:'b',b:88.6,t:98.8,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[7]},
+      {n:5, fl:1,w:'b',b:76.5,t:85.5,r:'3',bal:'מרפסת 9 מ״ר',tn:'דירת 3 חדרים',pl:[8]},
+      {n:6, fl:1,w:'b',b:59,t:68,r:'3',bal:'מרפסת 9 מ״ר',tn:'דירת 3 חדרים',pl:[30],s:1},
+      {n:7, fl:1,w:'f',b:57.5,t:63,r:'2.5',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2.5 חדרים',pl:[15],s:1},
+      {n:8, fl:1,w:'f',b:42.3,t:47.8,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[9]},
+      {n:9, fl:1,w:'f',b:44.5,t:50,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[10]},
+      {n:10,fl:1,w:'f',b:41.2,t:46.7,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[14],s:1},
+      {n:11,fl:2,w:'b',b:88.6,t:98.8,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[11]},
+      {n:12,fl:2,w:'b',b:59,t:68,r:'3',bal:'מרפסת 9 מ״ר',tn:'דירת 3 חדרים',pl:[12]},
+      {n:13,fl:2,w:'b',b:88.6,t:98.6,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[13]},
+      {n:14,fl:2,w:'f',b:57.5,t:63,r:'2.5',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2.5 חדרים',pl:[15],s:1},
+      {n:15,fl:2,w:'f',b:41.2,t:46.7,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[14]},
+      {n:16,fl:2,w:'f',b:57.5,t:63,r:'2.5',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2.5 חדרים',pl:[15]},
+      {n:17,fl:2,w:'f',b:41.2,t:46.7,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[14],s:1},
+      {n:18,fl:3,w:'b',b:88.6,t:98.8,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[16]},
+      {n:19,fl:3,w:'b',b:58.3,t:67.3,r:'3',bal:'מרפסת 9 מ״ר',tn:'דירת 3 חדרים',pl:[17]},
+      {n:20,fl:3,w:'b',b:88.6,t:98.6,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[18]},
+      {n:21,fl:3,w:'f',b:44.5,t:50,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[10],s:1},
+      {n:22,fl:3,w:'f',b:106,t:118,r:'4',bal:'מרפסת 12 מ״ר',tn:'דירת 4 חדרים',pl:[19]},
+      {n:23,fl:3,w:'f',b:42.3,t:47.8,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[9],s:1},
+      {n:24,fl:4,w:'b',b:88.6,t:98.8,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[20]},
+      {n:25,fl:4,w:'b',b:58.3,t:67.3,r:'3',bal:'מרפסת 9 מ״ר',tn:'דירת 3 חדרים',pl:[21]},
+      {n:26,fl:4,w:'b',b:88.6,t:98.6,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[22]},
+      {n:27,fl:4,w:'f',b:39.2,t:44.7,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[28],s:1},
+      {n:28,fl:4,w:'f',b:106,t:118,r:'4',bal:'מרפסת 12 מ״ר',tn:'דירת 4 חדרים',pl:[23]},
+      {n:29,fl:4,w:'f',b:37,t:42.5,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[27],s:1},
+      {n:30,fl:5,w:'b',b:88.6,t:98.8,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[24]},
+      {n:31,fl:5,w:'b',b:59.6,t:68.6,r:'3',bal:'מרפסת 9 מ״ר',tn:'דירת 3 חדרים',pl:[25]},
+      {n:32,fl:5,w:'b',b:88.6,t:98.8,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[26]},
+      {n:33,fl:5,w:'f',b:37,t:42.5,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[27],s:1},
+      {n:34,fl:5,w:'f',b:37,t:42.5,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[27]},
+      {n:35,fl:5,w:'f',b:39.2,t:44.7,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[28]},
+      {n:36,fl:5,w:'f',b:39.2,t:44.7,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[28],s:1},
+      {n:37,fl:6,w:'b',b:88.6,t:98.6,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[29]},
+      {n:38,fl:6,w:'b',b:59,t:68,r:'3',bal:'מרפסת 9 מ״ר',tn:'דירת 3 חדרים',pl:[30]},
+      {n:39,fl:6,w:'b',b:88.6,t:98.6,r:'4',bal:'מרפסת 10 מ״ר',tn:'דירת 4 חדרים',pl:[31]},
+      {n:40,fl:6,w:'f',b:67.8,t:73.3,r:'3',bal:'מרפסת 5.5 מ״ר',tn:'דירת 3 חדרים',pl:[32],s:1},
+      {n:41,fl:6,w:'f',b:67.8,t:73.3,r:'3',bal:'מרפסת 5.5 מ״ר',tn:'דירת 3 חדרים',pl:[32]},
+      {n:42,fl:6,w:'f',b:37,t:42.5,r:'2',bal:'מרפסת 5.5 מ״ר',tn:'דירת 2 חדרים',pl:[27],s:1},
+      {n:43,fl:7,w:'b',b:56.7,t:127.9,r:'3',bal:'מרפסת גג 71 מ״ר',tn:'פנטהאוז גג',pl:[33]},
+      {n:44,fl:7,w:'b',b:51.8,t:111.3,r:'3',bal:'מרפסת גג 59 מ״ר',tn:'פנטהאוז גג',pl:[34]},
+      {n:45,fl:7,w:'f',b:74.7,t:161.6,r:'3',bal:'מרפסת גג 87 מ״ר',tn:'פנטהאוז גג',pl:[35]},
+      {n:46,fl:7,w:'f',b:74.7,t:162.7,r:'3',bal:'מרפסת גג 88 מ״ר',tn:'פנטהאוז גג',pl:[36]}
+    ];
+    this.POIS = [
+      { name:'חוף הים', time:'תחנה' },
+      { name:'שוק הפשפשים', time:'5′' },
+      { name:'מתחם נגה', time:'6′' },
+      { name:'רכבת קלה', time:'בשדרה' },
+      { name:'נווה צדק', time:'8′' },
+      { name:'סוהו האוס', time:'7′' },
+      { name:'נמל יפו', time:'10′' },
+      { name:'יפו העתיקה', time:'12′' }
+    ];
+    this.PKGS = [
+      { name:'חמרה', en:'CLAY', img:'assets/img/pkg-clay-1.jpg', thumb:'assets/img/apt-living.jpg',
+        palette:['#a96a45','#d8c3a8','#6f5740','#e7ded0'],
+        desc:'גוון חמים וקרקעי. ריהוט רך בגוון חמרה, נגרות עץ אגוז ושטיחים בדוגמת לבנים — אווירה ביתית, עוטפת וים־תיכונית.',
+        mats:['ריהוט בגוון טרקוטה','נגרות עץ אגוז','ריצוף בטון מוחלק','טקסטיל בגווני חימר'] },
+      { name:'קובלט', en:'COBALT', img:'assets/img/pkg-cobalt-1.jpg', thumb:'assets/img/pkg-cobalt-2.jpg',
+        palette:['#2c4ea0','#7d92c9','#cdd4e6','#e7ded0'],
+        desc:'גוון כחול עז ונקי. אריחי קרמיקה כחולים מבריקים, מטבח בגמר מתכת ומדפי קובלט — אנרגטי, צעיר ובהיר.',
+        mats:['אריחי קרמיקה כחולים','מטבח בגמר מתכת','מדפים בגוון קובלט','ריצוף אבן בהיר'] },
+      { name:'ירוק', en:'VERDE', img:'assets/img/pkg-green-1.jpg', thumb:'assets/img/apt-bedroom.jpg',
+        palette:['#3f5e44','#5f7a55','#bcae8f','#cfcabd'],
+        desc:'גוון ירוק עמוק וטבעי. אריחי קרמיקה ירוקים, ריצוף דמוי טרצו ונגרות אגוז — רוגע אורבני ותחושת גן.',
+        mats:['אריחי קרמיקה ירוקים','ריצוף דמוי טרצו','נגרות עץ אגוז','כלים סניטריים לבנים'] }
+    ];
+  }
+  band(t){
+    if(t>=130) return { bg:'#181818', fg:'#f3efe7', bd:'#181818' };
+    if(t>=95)  return { bg:'#cdc7b8', fg:'#181818', bd:'rgba(24,24,24,.16)' };
+    if(t>=60)  return { bg:'#d9d4c8', fg:'#181818', bd:'rgba(24,24,24,.14)' };
+    return { bg:'#e4e0d6', fg:'#181818', bd:'rgba(24,24,24,.12)' };
+  }
+  isPent(a){ return /פנטהאוז/.test(a.tn); }
+  matchFilter(a){
+    const f = this.state.filter;
+    if(!f) return true;
+    if(f==='ph') return this.isPent(a);
+    return a.r===f && !this.isPent(a);
+  }
+  setFilter(f){ const nf = (this.state.filter===f) ? null : f; this.setState({ filter: nf }); }
+  openApt(a){ try{ document.body.style.overflow='hidden'; }catch(e){} this.setState({ open:a }); }
+  closeApt(){ try{ document.body.style.overflow=''; }catch(e){} this.setState({ open:null }); }
+  unit(a){ return { n:a.n, area:a.b+' מ״ר', opacity: this.matchFilter(a) ? 1 : 0.16, open:()=>this.openApt(a) }; }
+  renderVals(){
+    const order=[7,6,5,4,3,2,1,0];
+    const floors = order.map(f=>({
+      label: f===0?'קרקע':String(f),
+      isGround: f===0,
+      isPent: f===7,
+      notPent: f!==7,
+      core: f===0?'לובי · מסחר':'אטריום',
+      front: this.APTS.filter(a=>a.fl===f && a.w==='f').sort((x,y)=>x.n-y.n).map(a=>this.unit(a)),
+      back:  this.APTS.filter(a=>a.fl===f && a.w==='b').sort((x,y)=>x.n-y.n).map(a=>this.unit(a))
+    }));
+    const fdef = [
+      { key:null, label:'הכל' },
+      { key:'2', label:'2 חד׳' },
+      { key:'2.5', label:'2.5 חד׳' },
+      { key:'3', label:'3 חד׳' },
+      { key:'4', label:'4 חד׳' },
+      { key:'ph', label:'פנטהאוז' }
+    ];
+    const cur = this.state.filter;
+    const countFor = (k)=> k===null ? this.APTS.length : (k==='ph' ? this.APTS.filter(a=>this.isPent(a)).length : this.APTS.filter(a=>a.r===k && !this.isPent(a)).length);
+    const roomFilters = fdef.map(d=>{
+      const active = (cur===d.key);
+      return { label:d.label, count:countFor(d.key), select:()=>this.setFilter(d.key),
+        bg: active ? '#181818' : 'transparent',
+        fg: active ? '#f3efe7' : '#54514a',
+        border: active ? '#181818' : 'rgba(24,24,24,.22)' };
+    });
+    const o=this.state.open;
+    // design packages
+    const pi = this.state.pkg || 0;
+    const pkgs = this.PKGS.map((p,idx)=>({
+      name:p.name, en:p.en, select:()=>this.setState({ pkg:idx }),
+      fg: idx===pi ? '#181818' : '#9a958c',
+      under: idx===pi ? '#181818' : 'transparent'
+    }));
+    const ap = this.PKGS[pi];
+    const activePkgName = ap.name, activePkgEn = ap.en, activePkgDesc = ap.desc;
+    const activePkgImgList = [{ img:ap.img, alt:'חבילת '+ap.name }];
+    const activePkgThumbList = [{ img:ap.thumb, alt:'חבילת '+ap.name }];
+    const activePkgPalette = ap.palette.map(c=>({ c }));
+    const activePkgMats = ap.mats.map(m=>({ m }));
+    let openPlans=[], openTitle='', openSub='', openFloor='', openRooms='', openBuilt='', openTotal='', openBal='', openSample=false;
+    if(o){
+      openPlans = o.pl.map((p,i)=>({ url:this.P(p), label: o.pl.length>1 ? (i===0?'מפלס עליון':'מפלס תחתון') : 'תוכנית הדירה' }));
+      openTitle='דירה '+o.n; openSub=o.tn;
+      openFloor = o.fl===0 ? 'קומת קרקע · גן' : (this.isPent(o) ? 'קומת פנטהאוז' : ('קומה '+o.fl));
+      openRooms=o.r; openBuilt=o.b+' מ״ר'; openTotal=o.t+' מ״ר'; openBal=o.bal; openSample=!!o.s;
+    }
+    return { floors, roomFilters, pois:this.POIS, pkgs, activePkgName, activePkgEn, activePkgDesc, activePkgImgList, activePkgThumbList, activePkgPalette, activePkgMats, hasOpen:!!o, openPlans, openTitle, openSub, openFloor, openRooms, openBuilt, openTotal, openBal, openSample,
+      closeApt:()=>this.closeApt(), stop:(e)=>{ if(e&&e.stopPropagation) e.stopPropagation(); } };
+  }
+  componentDidUpdate(){ this._hydratePlans(); }
+  _hydratePlans(){
+    try{
+      document.querySelectorAll('img[data-plan-src]').forEach(img=>{
+        const u = img.getAttribute('data-plan-src');
+        if(u && u.indexOf('{{')===-1 && img.getAttribute('src')!==u) img.src = u;
+      });
+    }catch(e){}
+  }
+  componentDidMount(){
+    const root = document.getElementById('atrium-root');
+    if(!root) return;
+
+    // count-up stats (CSS drives reveals; this only animates the numerals)
+    const countEls = Array.from(root.querySelectorAll('.stat-num'));
+    const runCount = (el)=>{
+      const to = parseInt(el.getAttribute('data-to'),10) || 0;
+      const dur = 1100, t0 = performance.now();
+      const ease = p => 1 - Math.pow(1-p, 3);
+      const step = (t)=>{ const p = Math.min(1,(t-t0)/dur); el.textContent = Math.round(ease(p)*to); if(p<1) requestAnimationFrame(step); else el.textContent = to; };
+      requestAnimationFrame(step);
+    };
+    if('IntersectionObserver' in window){
+      const sio = new IntersectionObserver((ents)=>{ ents.forEach(e=>{ if(e.isIntersecting){ runCount(e.target); sio.unobserve(e.target); } }); }, { threshold:0.6 });
+      countEls.forEach(el=>sio.observe(el));
+    }
+
+    const nav = document.getElementById('atrium-nav');
+    const scrim = document.getElementById('nav-scrim');
+    const links = document.getElementById('nav-links');
+    const logo = document.getElementById('nav-logo');
+    const sub = document.getElementById('nav-sub');
+    const cta = document.getElementById('nav-cta');
+    const heroImg = document.getElementById('hero-img');
+    const heroCue = document.getElementById('hero-cue');
+    let ticking = false;
+    const apply = ()=>{
+      ticking = false;
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const solid = y > 60;
+      if(nav){ nav.style.background = solid ? 'rgba(233,230,223,.96)' : 'transparent'; nav.style.boxShadow = solid ? '0 1px 0 rgba(24,24,24,.1)' : 'none'; nav.style.backdropFilter = solid ? 'blur(8px)' : 'none'; }
+      if(scrim) scrim.style.opacity = solid ? '0' : '1';
+      const ink = '#181818', cream = '#f2efe8';
+      if(links) links.style.color = solid ? ink : '#eceae3';
+      if(logo) logo.style.color = solid ? ink : cream;
+      if(sub) sub.style.color = solid ? 'rgba(24,24,24,.5)' : 'rgba(242,239,232,.65)';
+      if(cta) cta.style.color = solid ? ink : cream;
+      // hero parallax
+      if(heroImg && y < window.innerHeight){ heroImg.style.transform = 'translateY(' + (y*0.18) + 'px)'; }
+      if(heroCue) heroCue.style.opacity = y > 40 ? '0' : '';
+    };
+    const onScroll = ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(apply); } };
+    window.addEventListener('scroll', onScroll, { passive:true });
+    apply();
+    this._onScroll = onScroll;
+
+    const onKey = (e)=>{ if(e.key==='Escape' && this.state.open) this.closeApt(); };
+    window.addEventListener('keydown', onKey);
+    this._onKey = onKey;
+  }
+  componentWillUnmount(){
+    if(this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if(this._onKey) window.removeEventListener('keydown', this._onKey);
+  }
+}
+</script>
+</body>
+</html>
