@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8" />
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,7 +9,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5HPB9SDB');</script>
 <!-- End Google Tag Manager -->
-<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>THE ATRIUM — 94 Jerusalem Blvd, TLV</title>
 <link rel="icon" type="image/svg+xml" href="assets/logo/a.svg" />
@@ -340,6 +340,10 @@ header.nav.hide{transform:translateY(-100%)}
   .cell{padding:5px 2px;min-height:40px}.cell .cn{font-size:11px}.cell .cs{font-size:9px}
 }
 @media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none}.word i{transform:none}}
+.privacy-notice{direction:rtl;text-align:right;font-size:12px;line-height:1.55;margin:12px 0;color:inherit}
+.privacy-notice a{color:inherit;text-decoration:underline}
+.privacy-choice{display:flex;align-items:flex-start;gap:8px;direction:rtl;text-align:right;font-size:12px;line-height:1.5;margin:10px 0;cursor:pointer}
+.privacy-choice input{flex:none;width:16px;height:16px;margin:2px 0 0;accent-color:#fff}
 </style>
 </head>
 <body>
@@ -559,10 +563,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>CONTACT US</h3>
         <div class="field"><label>Full Name</label><input type="text" name="name" required /></div>
         <div class="field"><label>Phone</label><input type="tel" name="phone" required /></div>
-        <div class="field"><label>Email</label><input type="email" name="email" /></div>
+        <div class="field"><label>Email</label><input type="email" name="email" required /></div>
         <div class="field"><label>Apartment Type</label>
           <select name="type"><option value="">Select…</option><option>2 Rooms</option><option>3 Rooms</option><option>4 Rooms</option><option>5 Rooms</option><option>Penthouse</option></select>
         </div>
+        <div class="privacy-notice" dir="rtl">מסירת הפרטים מרצון ואינה חובה על פי חוק. קבוצת גבסו – לבנט יזמות בע״מ, ח.פ. 516707940, תשתמש בהם לטיפול בפנייתך, ליצירת קשר ולשליחת מייל היכרות אוטומטי על הפרויקט. המידע יעובד במערכות החברה ובאמצעות ספקים מטעמה, לרבות Fireberry CRM, OpenAI, Anthropic/Claude ו-Railway, ועשוי לעבור גם מחוץ לישראל. ללא הפרטים הנדרשים לא נוכל לטפל בפנייה. מידע על מסירת המידע, זכויות עיון ותיקון ופנייה אלינו בכתובת <a href="mailto:Dan@levant-living.co.il">Dan@levant-living.co.il</a> מופיע ב<a href="https://lvnt.co.il/privacy-policy/" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</div>
+        <label class="privacy-choice" dir="rtl"><input type="checkbox" name="privacy_ack" required /><span>קראתי את הודעת הפרטיות ואת מדיניות הפרטיות, ואני מאשר/ת את מסירת פרטיי לטיפול בפנייתי, לרבות שליחת מייל היכרות אוטומטי על הפרויקט ועיבוד המידע באמצעות הספקים המפורטים בהודעה.</span></label>
+        <label class="privacy-choice" dir="rtl"><input type="checkbox" name="marketing_consent" value="yes" /><span>אני מסכים/ה לקבל מ-LVNT עדכונים, מידע והצעות שיווקיות בנוגע לפרויקטים ולשירותים באמצעות דוא״ל, SMS, WhatsApp ואמצעי תקשורת נוספים, בהתאם לדין. ניתן להסיר את ההסכמה בכל עת.</span></label>
         <button class="submit" type="submit">SUBMIT</button>
       </form>
     </div>
@@ -593,11 +600,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="lc-sub">השאירו פרטים ונחזור אליכם עם כל המידע על THE ATRIUM</p>
       <div class="field"><label>Full Name</label><input type="text" name="name" required /></div>
       <div class="field"><label>Phone</label><input type="tel" name="phone" required /></div>
-      <div class="field"><label>Email</label><input type="email" name="email" /></div>
+      <div class="field"><label>Email</label><input type="email" name="email" required /></div>
       <div class="field"><label>Apartment Type</label>
         <select name="type"><option value="">Select…</option><option>2 Rooms</option><option>3 Rooms</option><option>4 Rooms</option><option>5 Rooms</option><option>Penthouse</option></select>
       </div>
-      <button class="submit" type="submit">SUBMIT</button>
+      <div class="privacy-notice" dir="rtl">מסירת הפרטים מרצון ואינה חובה על פי חוק. קבוצת גבסו – לבנט יזמות בע״מ, ח.פ. 516707940, תשתמש בהם לטיפול בפנייתך, ליצירת קשר ולשליחת מייל היכרות אוטומטי על הפרויקט. המידע יעובד במערכות החברה ובאמצעות ספקים מטעמה, לרבות Fireberry CRM, OpenAI, Anthropic/Claude ו-Railway, ועשוי לעבור גם מחוץ לישראל. ללא הפרטים הנדרשים לא נוכל לטפל בפנייה. מידע על מסירת המידע, זכויות עיון ותיקון ופנייה אלינו בכתובת <a href="mailto:Dan@levant-living.co.il">Dan@levant-living.co.il</a> מופיע ב<a href="https://lvnt.co.il/privacy-policy/" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</div>
+        <label class="privacy-choice" dir="rtl"><input type="checkbox" name="privacy_ack" required /><span>קראתי את הודעת הפרטיות ואת מדיניות הפרטיות, ואני מאשר/ת את מסירת פרטיי לטיפול בפנייתי, לרבות שליחת מייל היכרות אוטומטי על הפרויקט ועיבוד המידע באמצעות הספקים המפורטים בהודעה.</span></label>
+        <label class="privacy-choice" dir="rtl"><input type="checkbox" name="marketing_consent" value="yes" /><span>אני מסכים/ה לקבל מ-LVNT עדכונים, מידע והצעות שיווקיות בנוגע לפרויקטים ולשירותים באמצעות דוא״ל, SMS, WhatsApp ואמצעי תקשורת נוספים, בהתאם לדין. ניתן להסיר את ההסכמה בכל עת.</span></label>
+        <button class="submit" type="submit">SUBMIT</button>
     </form>
   </div>
 </div>
@@ -769,7 +779,7 @@ if(_qn)_qn.onclick=()=>qsGo(qsi+1);
 const APT={"1":{"m":"GS0","fl":"קרקע","w":"עורף","r":null,"main":56.7,"balc":null,"yard":9,"pg":null},"2":{"m":"GW","fl":"קרקע","w":"עורף","r":null,"main":59.5,"balc":null,"yard":8,"pg":null},"3":{"m":"GN0","fl":"קרקע","w":"עורף","r":null,"main":88.5,"balc":null,"yard":9,"pg":null},"4":{"m":"WS","fl":"קומה 1","w":"עורף","r":4,"main":88.6,"balc":10.2,"pg":0},"5":{"m":"W1","fl":"קומה 1","w":"עורף","r":3,"main":76.5,"balc":9,"pg":1},"8":{"m":"EN1","fl":"קומה 1","w":"חזית","r":1,"main":42.3,"balc":5.5,"pg":2},"9":{"m":"ES1","fl":"קומה 1","w":"חזית","r":1,"main":44.5,"balc":5.5,"pg":3},"11":{"m":"WS","fl":"קומה 2","w":"עורף","r":4,"main":88.6,"balc":10.2,"pg":0},"12":{"m":"W","fl":"קומה 2","w":"עורף","r":3,"main":58.5,"balc":9,"pg":4},"13":{"m":"WN","fl":"קומה 2","w":"עורף","r":4,"main":88.6,"balc":10,"pg":5},"15":{"m":"EN2","fl":"קומה 2","w":"חזית","r":1,"main":41.2,"balc":5.5,"pg":6},"16":{"m":"ES2","fl":"קומה 2","w":"חזית","r":1,"main":57.5,"balc":5.5,"pg":7},"18":{"m":"WS","fl":"קומה 3","w":"עורף","r":4,"main":88.6,"balc":10.2,"pg":0},"19":{"m":"W","fl":"קומה 3","w":"עורף","r":3,"main":58.5,"balc":9,"pg":4},"20":{"m":"WN","fl":"קומה 3","w":"עורף","r":4,"main":88.6,"balc":10,"pg":5},"22":{"m":"E3","fl":"קומה 3","w":"חזית","r":3,"main":110,"balc":11,"pg":8},"24":{"m":"WS","fl":"קומה 4","w":"עורף","r":4,"main":88.6,"balc":10.2,"pg":0},"25":{"m":"W","fl":"קומה 4","w":"עורף","r":3,"main":58.5,"balc":9,"pg":4},"26":{"m":"WN","fl":"קומה 4","w":"עורף","r":4,"main":88.6,"balc":10,"pg":5},"28":{"m":"E4","fl":"קומה 4","w":"חזית","r":3,"main":106,"balc":11,"pg":9},"30":{"m":"WS","fl":"קומה 5","w":"עורף","r":4,"main":88.6,"balc":10.2,"pg":0},"31":{"m":"W","fl":"קומה 5","w":"עורף","r":3,"main":58.5,"balc":9,"pg":4},"32":{"m":"WN","fl":"קומה 5","w":"עורף","r":4,"main":88.6,"balc":10.2,"pg":5},"34":{"m":"EN","fl":"קומה 5","w":"חזית","r":1,"main":37,"balc":5.5,"pg":10},"35":{"m":"ES5","fl":"קומה 5","w":"חזית","r":1,"main":39.2,"balc":5.5,"pg":11},"37":{"m":"WS","fl":"קומה 6","w":"עורף","r":4,"main":88.6,"balc":10,"pg":0},"38":{"m":"W","fl":"קומה 6","w":"עורף","r":3,"main":58.5,"balc":9,"pg":4},"39":{"m":"WN","fl":"קומה 6","w":"עורף","r":4,"main":88.6,"balc":10,"pg":5},"41":{"m":"E6","fl":"קומה 6","w":"חזית","r":2,"main":67.8,"balc":5.5,"pg":12},"43":{"m":"PWS","fl":"קומה 7","w":"עורף","r":3,"main":71.2,"balc":56.7,"pg":13},"44":{"m":"PWN","fl":"קומה 7","w":"עורף","r":3,"main":59.5,"balc":51.8,"pg":14},"45":{"m":"PEN","fl":"קומה 7","w":"חזית","r":4,"main":86.9,"balc":74.7,"pg":15},"46":{"m":"PES","fl":"קומה 7","w":"חזית","r":4,"main":88,"balc":74.7,"pg":16}};
 const sold=new Set([6,7,10,14,16,17,21,23,27,29,33,36,38,40,42]);
 // exact cell geometry from Figma node 1:34 (frame 951 x 424.72), [x,y,w,h]
-const APT_RECT={46:[115,32,109,41],45:[225,32,109,41],42:[25,74,110,41],41:[135,74,105,41],40:[241,74,183,41],36:[25,116,110,41],35:[135,115,89,41],34:[224,115,89,41],33:[313,115,111,41],29:[25,158,110,41],28:[135,158,178,41],27:[314,158,111,41],23:[25,200,110,41],22:[135,200,178,41],21:[314,200,111,41],17:[25,241,110,41],16:[135,241,89,41],15:[224,241,89,41],14:[313,242,111,41],10:[25,282,110,41],9:[135,283,89,41],8:[224,283,89,41],7:[313,283,111,41],43:[663,30,103,41],44:[766,30,91,41],39:[594,72,111,41],38:[705,72,110,41],37:[815,72,111,41],32:[594,114,111,41],31:[705,114,110,41],30:[815,114,111,41],26:[594,156,111,41],25:[705,156,110,41],24:[815,156,111,41],20:[594,198,111,41],19:[705,198,110,41],18:[815,198,111,41],13:[594,239,111,43],12:[705,239,110,43],11:[815,239,111,43],6:[594,282,111,41],5:[705,282,110,41],4:[815,282,111,41],3:[594,324,110,56],2:[705,324,111,56],1:[816,324,111,56]};
+const APT_RECT={46:[115,32,109,41],45:[225,32,109,41],42:[25,74,110,41],41:[135,74,105,41],40:[241,74,183,41],36:[25,116,110,41],35:[135,115,89,41],34:[224,115,89,41],33:[313,115,111,41],29:[25,158,110,41],28:[135,158,178,41],27:[314,158,111,41],23:[25,200,110,41],22:[135,200,178,41],21:[314,200,111,41],17:[25,241,110,41],16:[135,241,89,41],15:[224,241,89,41],14:[313,242,111,41],10:[25,282,110,41],9:[135,283,89,41],8:[224,283,89,41],7:[313,283,111,41],44:[663,30,103,41],43:[766,30,91,41],39:[594,72,111,41],38:[705,72,110,41],37:[815,72,111,41],32:[594,114,111,41],31:[705,114,110,41],30:[815,114,111,41],26:[594,156,111,41],25:[705,156,110,41],24:[815,156,111,41],20:[594,198,111,41],19:[705,198,110,41],18:[815,198,111,41],13:[594,239,111,43],12:[705,239,110,43],11:[815,239,111,43],6:[594,282,111,41],5:[705,282,110,41],4:[815,282,111,41],3:[594,324,110,56],2:[705,324,111,56],1:[816,324,111,56]};
 const DW=951,DH=424.72,FIGMA_SOLD=new Set([7,10,14,16,17,21,23,27,29,33,36,40,42]);
 const dia=document.getElementById('diagram');
 function pcx(v){return (v/DW*100).toFixed(3)+'%';}function pcy(v){return (v/DH*100).toFixed(3)+'%';}
@@ -838,7 +848,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
       body.append('telephone1',data.phone);
       if(data.email)body.append('emailaddress1',data.email);
       const rm=ROOMS[data.type];if(rm)body.append('pcfsystemfield16',rm);
-      body.append('description',['מקור: אתר THE ATRIUM',data.type?('סוג דירה: '+data.type):''].filter(Boolean).join(' | '));
+      body.append('description',['מקור: אתר THE ATRIUM',data.type?('סוג דירה: '+data.type):'', 'הודעת פרטיות: אושרה', 'דיוור שיווקי: '+(el['marketing_consent']&&el['marketing_consent'].checked?'הסכים':'לא הסכים')].filter(Boolean).join(' | '));
       try{await fetch(FB_URL,{method:'POST',mode:'no-cors',body});}catch(_){}
       form.innerHTML='<h3>'+(form.dataset.doneHead||'CONTACT US')+'</h3><p class="cform-done">תודה! פנייתך התקבלה — נחזור אליך בהקדם.</p>';
     });
