@@ -227,7 +227,9 @@ header.nav.hide{transform:translateY(-100%)}
 .apt-modal.open{display:grid}
 .apt-card{position:relative;background:var(--bg);max-width:900px;width:100%;max-height:90vh;overflow:hidden;display:grid;grid-template-columns:1.05fr 1fr}
 .apt-card .plan{background:#fff;display:grid;place-items:center;padding:22px;cursor:zoom-in;overflow:auto;min-width:0;max-height:90vh;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
-.apt-card .plan img{width:100%;height:auto;transition:width .25s var(--ease)}
+.apt-card .plan img{width:100%;height:auto;transition:width .25s var(--ease),opacity .2s}
+.apt-card .plan.loading img{opacity:0}
+.apt-card .plan.loading{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='14' fill='none' stroke='%23ff3b0d' stroke-width='3' stroke-dasharray='60 30'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 18 18' to='360 18 18' dur='.8s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/svg%3E") center/36px no-repeat}
 .apt-card .plan.zoomed{place-items:start start;cursor:zoom-out}
 .apt-card .plan.zoomed img{width:200%;max-width:none}
 .apt-card .info{min-width:0}
@@ -787,8 +789,10 @@ if(dia)Object.keys(APT_RECT).forEach(k=>{const n=+k;const r=APT_RECT[n];const st
   if(sold.has(n)){if(!FIGMA_SOLD.has(n)){const o=document.createElement('div');o.className='dia-sold';o.style.cssText=st;dia.appendChild(o);}}
   else{const b=document.createElement('button');b.className='dia-hot';b.dataset.n=n;b.style.cssText=st;b.setAttribute('aria-label','דירה '+n);dia.appendChild(b);}});
 const modal=document.getElementById('aptModal');
+// one plan image per apartment (from "תוכניות כל הדירות - מאוחד.pdf"); the old plans2/page-NN were per model, so every W unit showed apt 12's sheet
+const PLAN3=new Set([1,2,3,4,5,8,9,11,12,13,15,16,18,19,20,22,24,25,26,28,30,31,32,34,35,37,38,39,41,43,44,45,46]);
 function openApt(n){const a=APT[n];const planImg=document.getElementById('aptPlan');const planWrap=planImg.parentElement;planWrap.classList.remove('zoomed');planWrap.scrollTop=0;planWrap.scrollLeft=0;let np=planWrap.querySelector('.noplan');
-  if(a&&a.pg!=null){planImg.src='assets/plans2/page-'+String(a.pg).padStart(2,'0')+'.jpg';planImg.style.display='';if(np)np.remove();}
+  if(PLAN3.has(+n)){planImg.removeAttribute('src');planWrap.classList.add('loading');planImg.onload=()=>planWrap.classList.remove('loading');planImg.src='assets/plans3/apt-'+n+'.jpg';planImg.style.display='';if(np)np.remove();}
   else{planImg.removeAttribute('src');planImg.style.display='none';if(!np){np=document.createElement('div');np.className='noplan';np.textContent='התוכנית זמינה במשרד המכירות';planWrap.appendChild(np);}}
   document.getElementById('aptTitle').textContent='דירה '+n;
   const wing=a?(a.w==='חזית'?'חזית — שדרות ירושלים':'עורף — נוף למערב'):'';
