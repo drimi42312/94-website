@@ -838,7 +838,6 @@ addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
     accounttypecode:"8",       // סוג לקוח: לקוח
     returnpath:"https://levant-living.co.il/"
   };
-  const MAKE_HOOK="https://hook.eu1.make.com/myro85vgta8ma5wgk7ldxoe64qs808g9"; // Make scenario — receives every lead in parallel to Fireberry
   const ROOMS={"2 Rooms":"4","3 Rooms":"6","4 Rooms":"8","5 Rooms":"10","Penthouse":"10"}; // -> pcfsystemfield16 (חדרים מינימום)
   function wire(form){
     if(!form)return;
@@ -854,16 +853,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
       if(data.email)body.append('emailaddress1',data.email);
       const rm=ROOMS[data.type];if(rm)body.append('pcfsystemfield16',rm);
       body.append('description',['מקור: אתר THE ATRIUM',data.type?('סוג דירה: '+data.type):'', 'הודעת פרטיות: אושרה', 'דיוור שיווקי: '+(el['marketing_consent']&&el['marketing_consent'].checked?'הסכים':'לא הסכים')].filter(Boolean).join(' | '));
-      const hook=new URLSearchParams({
-        source:'THE ATRIUM website',project:"THE ATRIUM שד' ירושלים 94",form:form.id,
-        name:data.name,phone:data.phone,email:data.email,apartment_type:data.type,
-        privacy_ack:'yes',marketing_consent:(el['marketing_consent']&&el['marketing_consent'].checked?'yes':'no'),
-        page:location.href.slice(0,500),submitted_at:new Date().toISOString()
-      });
-      await Promise.allSettled([
-        fetch(FB_URL,{method:'POST',mode:'no-cors',body}),
-        fetch(MAKE_HOOK,{method:'POST',mode:'no-cors',keepalive:true,body:hook})
-      ]);
+      try{await fetch(FB_URL,{method:'POST',mode:'no-cors',body});}catch(_){}
       form.innerHTML='<h3>'+(form.dataset.doneHead||'CONTACT US')+'</h3><p class="cform-done">תודה! פנייתך התקבלה — נחזור אליך בהקדם.</p>';
     });
   }
