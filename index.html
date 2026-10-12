@@ -790,9 +790,9 @@ if(dia)Object.keys(APT_RECT).forEach(k=>{const n=+k;const r=APT_RECT[n];const st
   else{const b=document.createElement('button');b.className='dia-hot';b.dataset.n=n;b.style.cssText=st;b.setAttribute('aria-label','דירה '+n);dia.appendChild(b);}});
 const modal=document.getElementById('aptModal');
 // one plan image per apartment (from "תוכניות כל הדירות - מאוחד.pdf"); the old plans2/page-NN were per model, so every W unit showed apt 12's sheet
-const PLAN3=new Set([1,2,3,4,5,8,9,11,12,13,15,16,18,19,20,22,24,25,26,28,30,31,32,34,35,37,38,39,41,43,44,45,46]);
+const PLAN3=new Set([1,2,3,4,5,8,9,11,12,13,15,16,18,19,20,22,24,25,26,28,30,31,32,34,35,37,38,39,41,43,44,45,46]);const PLANV={15:'20261012'};/* plan replaced → bust Cloudflare cache (Dan 12.10.26) */
 function openApt(n){const a=APT[n];const planImg=document.getElementById('aptPlan');const planWrap=planImg.parentElement;planWrap.classList.remove('zoomed');planWrap.scrollTop=0;planWrap.scrollLeft=0;let np=planWrap.querySelector('.noplan');
-  if(PLAN3.has(+n)){planImg.removeAttribute('src');planWrap.classList.add('loading');planImg.onload=()=>planWrap.classList.remove('loading');planImg.src='assets/plans3/apt-'+n+'.jpg';planImg.style.display='';if(np)np.remove();}
+  if(PLAN3.has(+n)){planImg.removeAttribute('src');planWrap.classList.add('loading');planImg.onload=()=>planWrap.classList.remove('loading');planImg.src='assets/plans3/apt-'+n+'.jpg'+(PLANV[+n]?'?v='+PLANV[+n]:'');planImg.style.display='';if(np)np.remove();}
   else{planImg.removeAttribute('src');planImg.style.display='none';if(!np){np=document.createElement('div');np.className='noplan';np.textContent='התוכנית זמינה במשרד המכירות';planWrap.appendChild(np);}}
   document.getElementById('aptTitle').textContent='דירה '+n;
   const wing=a?(a.w==='חזית'?'חזית — שדרות ירושלים':'עורף — נוף למערב'):'';
